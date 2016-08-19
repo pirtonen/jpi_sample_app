@@ -52,6 +52,8 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'guard-spork'
+  gem 'spork'
 end
 
 group :production do
