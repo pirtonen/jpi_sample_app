@@ -25,6 +25,8 @@ RSpec.describe User, type: :model do
   it { is_expected.to respond_to(:password_digest) }
   it { is_expected.to respond_to(:password) }
   it { is_expected.to respond_to(:password_confirmation) }
+  it { is_expected.to respond_to(:remember_token) }
+  it { is_expected.to respond_to(:authenticate) }
   
   it { is_expected.to be_valid }
   
@@ -118,5 +120,9 @@ RSpec.describe User, type: :model do
       expect(@user.reload.email).to eq(mixed_case_email.downcase)
     end
   end
-
+  
+  describe "remember token" do
+		before { @user.save }
+		it { expect(@user.remember_token).not_to be_blank }
+	end
 end

@@ -59,6 +59,7 @@ RSpec.describe "User Pages", type: :feature do
         
         it { expect(subject).to have_title(user.name) }
         it { expect(subject).to have_selector('div.alert.alert-success', text: "Welcome") }
+        it { expect(subject).to have_link('Sign out') }
       end
     end
     
