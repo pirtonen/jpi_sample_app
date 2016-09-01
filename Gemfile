@@ -10,6 +10,7 @@ gem 'bcrypt'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'responders'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
