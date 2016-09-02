@@ -60,7 +60,16 @@ RSpec.describe "Authentication", type: :feature do
           
           it { expect(subject).to have_title('Sign in') }
         end
+
+        describe "visiting the following page" do
+          before { visit following_user_path(user) }
+          it { expect(subject).to have_title('Sign in') }
+        end
         
+        describe "visiting the followers page" do
+          before { visit followers_user_path(user) }
+          it { expect(subject).to have_title('Sign in') }         
+        end
       end
       
       describe "when attempting to visit a protected page" do
@@ -106,6 +115,17 @@ RSpec.describe "Authentication", type: :feature do
         end
       end
       
+      describe "in the Relationships controller" do
+        describe "submitting to the create action" do
+          before { post relationships_path }
+          specify { expect(response).to redirect_to(singin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete relationships_path }
+          specify { expect(response).to redirect_to(singin_path) }
+        end
+      end
     end
     
     describe "as wrong user" do
